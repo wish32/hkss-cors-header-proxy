@@ -22,10 +22,9 @@ export default {
             let br_no = url.searchParams.get("br_no");
 			let apiUrl = data_gov_hk_url;
 
-            if (company_name == null) {
+            if (company_name !== null) {
                 apiUrl += company_name_url+company_name;
-            }
-			if (br_no == null) {
+            }else if (br_no !== null) {
                 apiUrl += br_no_url+br_no;
             }
 
