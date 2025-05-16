@@ -9,17 +9,24 @@ export default {
 
         // The URL for the remote third party API you want to fetch from
         // but does not implement CORS
-        const API_URL = "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search?query[0][key1]=Comp_name&query[0][key2]=begins_with&query[0][key3]=Hing";
+        const data_gov_hk_url 	= "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search";
+        const company_name_url 	= "?query[0][key1]=Comp_name&query[0][key2]=begins_with&query[0][key3]=";
+        const br_no_url 	= "?query[0][key1]=Brn&query[0][key2]=equal&query[0][key3]=";
 
         // The endpoint you want the CORS reverse proxy to be on
         const PROXY_ENDPOINT = "/corsproxy/";
 
         async function handleRequest(request) {
             const url = new URL(request.url);
-            let apiUrl = url.searchParams.get("apiurl");
+            let company_name = url.searchParams.get("company_name");
+            let br_no = url.searchParams.get("br_no");
+			let apiUrl = data_gov_hk_url;
 
-            if (apiUrl == null) {
-                apiUrl = API_URL;
+            if (company_name == null) {
+                apiUrl += company_name_url+company_name;
+            }
+			if (br_no == null) {
+                apiUrl += br_no_url+br_no;
             }
 
             // 验证请求来源
