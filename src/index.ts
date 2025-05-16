@@ -8,7 +8,7 @@ export default {
 
 		// The URL for the remote third party API you want to fetch from
 		// but does not implement CORS
-		const API_URL = "https://examples.cloudflareworkers.com/demos/demoapi";
+		const API_URL = "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search?query[0][key1]=Comp_name&query[0][key2]=begins_with&query[0][key3]=Hing";
 
 		// The endpoint you want the CORS reverse proxy to be on
 		const PROXY_ENDPOINT = "/corsproxy/";
